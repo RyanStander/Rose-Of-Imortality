@@ -1,6 +1,7 @@
 using System;
 using Characters;
 using UnityEngine;
+using Weapons;
 
 namespace Player
 {
@@ -8,6 +9,7 @@ namespace Player
     {
         [SerializeField] private PlayerManager playerManager;
         [SerializeField] private Camera playerCamera;
+        [SerializeField] private Muzzle muzzle;
         [SerializeField] private float fireRate = 0.5f;
         
         [SerializeField] private int maxAmmo = 10;
@@ -23,6 +25,11 @@ namespace Player
             
             if (playerCamera == null)
                  playerCamera= Camera.main;
+
+            if (muzzle==null)
+            {
+                muzzle = GetComponentInChildren<Muzzle>();
+            }
         }
 
         public void HandleCombat()
@@ -56,6 +63,8 @@ namespace Player
                 Reload();
                 return;
             }
+            
+            muzzle.Flash();
             
             if (CheckIfHit() is CharacterHealth characterHealth)
             {

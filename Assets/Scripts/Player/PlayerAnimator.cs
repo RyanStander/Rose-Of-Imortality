@@ -47,7 +47,8 @@ namespace Player
         {
             var randomFire = UnityEngine.Random.Range(1,4).ToString();
             
-            animator.Play("Fire"+randomFire);
+            //animator.Play("Fire"+randomFire);
+            animator.CrossFade("Fire"+randomFire,0.1f,-1,0);
         }
         
         public void EmptyReload()
