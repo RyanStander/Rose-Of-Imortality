@@ -1,4 +1,5 @@
 using System;
+using Characters;
 using UnityEngine;
 
 namespace Player
@@ -6,9 +7,11 @@ namespace Player
     public class PlayerCombat : MonoBehaviour
     {
         [SerializeField] private PlayerManager playerManager;
+        [SerializeField] private Camera playerCamera;
         [SerializeField] private float fireRate = 0.5f;
         
         [SerializeField] private int maxAmmo = 10;
+        [SerializeField] private int damage = 10;
         private int currentAmmo = 10;
         
         private float timeStamp;
@@ -17,6 +20,9 @@ namespace Player
         {
             if (playerManager == null)
                 playerManager = GetComponentInParent<PlayerManager>();
+            
+            if (playerCamera == null)
+                 playerCamera= Camera.main;
         }
 
         public void HandleCombat()
@@ -50,10 +56,28 @@ namespace Player
                 Reload();
                 return;
             }
+            
+            if (CheckIfHit() is CharacterHealth characterHealth)
+            {
+                characterHealth.TakeDamage(damage);
+            }
 
             currentAmmo--;
             
             playerManager.PlayerAnimator.Fire();
+        }
+
+        private CharacterHealth CheckIfHit()
+        {
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out var hit, 100))
+            {
+                if (hit.transform.TryGetComponent(out CharacterHealth characterHealth))
+                {
+                    return characterHealth;
+                }
+            }
+
+            return null;
         }
 
         private void Reload()
