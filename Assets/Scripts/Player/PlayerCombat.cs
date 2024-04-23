@@ -10,6 +10,7 @@ namespace Player
         [SerializeField] private PlayerManager playerManager;
         [SerializeField] private Camera playerCamera;
         [SerializeField] private Muzzle muzzle;
+        [SerializeField] private WeaponSfx weaponSfx;
         [SerializeField] private float fireRate = 0.5f;
         
         [SerializeField] private int maxAmmo = 10;
@@ -27,9 +28,10 @@ namespace Player
                  playerCamera= Camera.main;
 
             if (muzzle==null)
-            {
                 muzzle = GetComponentInChildren<Muzzle>();
-            }
+            
+            if (weaponSfx==null)
+                weaponSfx = GetComponentInChildren<WeaponSfx>();
         }
 
         public void HandleCombat()
@@ -65,6 +67,7 @@ namespace Player
             }
             
             muzzle.Flash();
+            weaponSfx.PlayFireSound();
             
             if (CheckIfHit() is CharacterHealth characterHealth)
             {
@@ -100,6 +103,7 @@ namespace Player
                 playerManager.PlayerAnimator.EmptyReload();
             }
             
+            weaponSfx.PlayReloadSound();
             currentAmmo = maxAmmo;
         }
     }

@@ -12,12 +12,16 @@ Guns by Cransh: https://sketchfab.com/ccransh
 "Animated FPS hands (rifle animation pack)" (https://skfb.ly/ow86X) by Cransh is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 
+"War FX" (https://assetstore.unity.com/packages/vfx/particles/war-fx-5669)
+"StarterAssets - FirstPerson | Updates in new CharacterController package" (https://assetstore.unity.com/packages/essentials/starterassets-firstperson-updates-in-new-charactercontroller-pac-196525)
 
 
 
 
+SOUND:
 
-
+9mm Pistol Reload Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=98830">Pixabay</a>
+9mm Pistol Shot Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6349">Pixabay</a>
 
 
 
