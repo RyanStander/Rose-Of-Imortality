@@ -1,12 +1,12 @@
 using System;
+using Characters;
 using UnityEngine;
 
 namespace Player
 {
-    public class PlayerAnimator : MonoBehaviour
+    public class PlayerAnimator : CharacterAnimator
     {
         [SerializeField] private PlayerManager playerManager;
-        [SerializeField] private Animator animator;
         
         public bool isReloading  { get; private set; }
 
@@ -17,30 +17,28 @@ namespace Player
         private static readonly int IsReloading = Animator.StringToHash("isReloading");
 
         #endregion
-        
 
-        private void OnValidate()
+        protected override void GetComponents()
         {
+            base.GetComponents();
+            
             if (playerManager == null)
                 playerManager = GetComponentInParent<PlayerManager>();
-            
-            if (animator == null)
-                animator = GetComponent<Animator>();
         }
-        
+
         public void HandleAnimator()
         {
-            isReloading=animator.GetBool(IsReloading);
+            isReloading=Animator.GetBool(IsReloading);
         }
         
         public void SetAnimatorForwardSpeed(float speed)
         {
-            animator.SetFloat(Forward, speed);
+            Animator.SetFloat(Forward, speed);
         }
         
         public void SetGrounded(bool isGrounded)
         {
-            animator.SetBool(IsGrounded, isGrounded);
+            Animator.SetBool(IsGrounded, isGrounded);
         }
         
         public void Fire()
@@ -48,17 +46,17 @@ namespace Player
             var randomFire = UnityEngine.Random.Range(1,4).ToString();
             
             //animator.Play("Fire"+randomFire);
-            animator.CrossFade("Fire"+randomFire,0.1f,-1,0);
+            Animator.CrossFade("Fire"+randomFire,0.1f,-1,0);
         }
         
         public void EmptyReload()
         {
-            animator.Play("ReloadEmpty");
+            Animator.Play("ReloadEmpty");
         }
         
         public void TacticalReload()
         {
-            animator.Play("ReloadTactical");
+            Animator.Play("ReloadTactical");
         }
     }
 }

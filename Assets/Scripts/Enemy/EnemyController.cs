@@ -9,7 +9,7 @@ namespace Enemy
         public NavMeshAgent agent;
 
         public Transform player;
-        
+
         public LayerMask whatIsGround, whatIsPlayer;
 
         #region Patrolling
@@ -19,25 +19,31 @@ namespace Enemy
         public float walkPointRange;
 
         #endregion
-        
+
         #region Attacking
-        
+
         public float timeBetweenAttacks;
         private bool alreadyAttacked;
-        
+
         #endregion
-        
+
         #region States
-        
+
         public float sightRange, attackRange;
         public bool playerInSightRange, playerInAttackRange;
-        
+
         #endregion
-        
+
         private void OnValidate()
         {
-            player = GameObject.Find("PlayerCapsule").transform;
-            agent = GetComponent<NavMeshAgent>();
+            if (agent == null)
+                agent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Start()
+        {
+            if (player == null)
+                player = GameObject.Find("PlayerCapsule").transform;
         }
 
         private void Update()
@@ -65,43 +71,45 @@ namespace Enemy
             if (distanceToWalkPoint.magnitude < 1f)
                 walkPointSet = false;
         }
-        
+
         private void SearchWalkPoint()
         {
             float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
             float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
 
-            walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+            walkPoint = new Vector3(transform.position.x + randomX, transform.position.y,
+                transform.position.z + randomZ);
 
             if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
                 walkPointSet = true;
         }
-        
+
         private void ChasePlayer()
         {
             agent.SetDestination(player.position);
         }
-        
+
         private void AttackPlayer()
         {
             agent.SetDestination(transform.position);
 
-            transform.LookAt(player);
+            //prevent look at from changing the x and z rotation
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
             if (!alreadyAttacked)
             {
                 // Attack code here
-                
+
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
         }
-        
+
         private void ResetAttack()
         {
             alreadyAttacked = false;
         }
-        
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;

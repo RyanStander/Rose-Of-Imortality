@@ -1,10 +1,11 @@
 using System;
+using Characters;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : CharacterManager
     {
         public PlayerInput PlayerInput;
         public Inputs Inputs;

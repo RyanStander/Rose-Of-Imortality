@@ -5,33 +5,19 @@ using Weapons;
 
 namespace Player
 {
-    public class PlayerCombat : MonoBehaviour
+    public class PlayerCombat : CharacterCombat
     {
         [SerializeField] private PlayerManager playerManager;
-        [SerializeField] private Camera playerCamera;
-        [SerializeField] private Muzzle muzzle;
-        [SerializeField] private WeaponSfx weaponSfx;
-        [SerializeField] private float fireRate = 0.5f;
-        
-        [SerializeField] private int maxAmmo = 10;
-        [SerializeField] private int damage = 10;
-        private int currentAmmo = 10;
-        
-        private float timeStamp;
 
-        private void OnValidate()
+        protected override void GetComponents()
         {
+            base.GetComponents();
+            
             if (playerManager == null)
                 playerManager = GetComponentInParent<PlayerManager>();
             
-            if (playerCamera == null)
-                 playerCamera= Camera.main;
-
-            if (muzzle==null)
-                muzzle = GetComponentInChildren<Muzzle>();
-            
-            if (weaponSfx==null)
-                weaponSfx = GetComponentInChildren<WeaponSfx>();
+            if (RaycastOriginTransform == null)
+                RaycastOriginTransform= Camera.main.transform;
         }
 
         public void HandleCombat()
@@ -41,15 +27,15 @@ namespace Player
                 return;
             }
             
-            if(playerManager.Inputs.reload && currentAmmo<maxAmmo)
+            if(playerManager.Inputs.reload && CurrentAmmo<MaxAmmo)
             {
                 Reload();
                 playerManager.Inputs.reload = false;
             }
             
-            if (playerManager.Inputs.fire && Time.time >= timeStamp)
+            if (playerManager.Inputs.fire && Time.time >= TimeStamp)
             {
-                timeStamp = Time.time + fireRate;
+                TimeStamp = Time.time + FireRate;
                 Fire();
             }
             else if (playerManager.Inputs.fire)
@@ -58,43 +44,18 @@ namespace Player
             }
         }
         
-        private void Fire()
+        protected override void Fire()
         {
-            if (currentAmmo <= 0)
-            {
-                Reload();
-                return;
-            }
-            
-            muzzle.Flash();
-            weaponSfx.PlayFireSound();
-            
-            if (CheckIfHit() is CharacterHealth characterHealth)
-            {
-                characterHealth.TakeDamage(damage);
-            }
-
-            currentAmmo--;
+            base.Fire();
             
             playerManager.PlayerAnimator.Fire();
         }
 
-        private CharacterHealth CheckIfHit()
-        {
-            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out var hit, 100))
-            {
-                if (hit.transform.TryGetComponent(out CharacterHealth characterHealth))
-                {
-                    return characterHealth;
-                }
-            }
+        
 
-            return null;
-        }
-
-        private void Reload()
+        protected override void Reload()
         {
-            if (currentAmmo>0)
+            if (CurrentAmmo>0)
             {
                 playerManager.PlayerAnimator.TacticalReload();
             }
@@ -103,8 +64,7 @@ namespace Player
                 playerManager.PlayerAnimator.EmptyReload();
             }
             
-            weaponSfx.PlayReloadSound();
-            currentAmmo = maxAmmo;
+            base.Reload();
         }
     }
 }
