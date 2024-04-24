@@ -6,6 +6,7 @@ namespace Characters
     {
         [SerializeField] private int maxHealth = 100;
         private int currentHealth;
+        public bool IsDead { get; private set; }
 
         private void Start()
         {
@@ -23,6 +24,7 @@ namespace Characters
 
         private void Die()
         {
+            IsDead = true;
             Destroy(gameObject);
         }
     }

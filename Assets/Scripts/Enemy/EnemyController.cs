@@ -1,36 +1,40 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Enemy
 {
     public class EnemyController : MonoBehaviour
     {
-        public NavMeshAgent agent;
+        [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private EnemyManager enemyManager;
 
-        public Transform player;
+        [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
 
-        public LayerMask whatIsGround, whatIsPlayer;
+        [SerializeField]private float playerPositionCheckIntervals=0.5f;
+        private Vector3 lastPlayerPosition;
 
         #region Patrolling
 
-        public Vector3 walkPoint;
+        [SerializeField] private Vector3 walkPoint;
         private bool walkPointSet;
-        public float walkPointRange;
+        [SerializeField] private float walkPointRange;
 
         #endregion
 
         #region Attacking
 
-        public float timeBetweenAttacks;
+        [SerializeField] private float timeBetweenAttacks;
         private bool alreadyAttacked;
 
         #endregion
 
         #region States
 
-        public float sightRange, attackRange;
-        public bool playerInSightRange, playerInAttackRange;
+        [SerializeField] private float sightRange, attackRange;
+        [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
         #endregion
 
@@ -38,15 +42,12 @@ namespace Enemy
         {
             if (agent == null)
                 agent = GetComponent<NavMeshAgent>();
+
+            if (enemyManager == null)
+                enemyManager = GetComponentInParent<EnemyManager>();
         }
 
-        private void Start()
-        {
-            if (player == null)
-                player = GameObject.Find("PlayerCapsule").transform;
-        }
-
-        private void Update()
+        public void HandleStates()
         {
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -57,6 +58,21 @@ namespace Enemy
                 ChasePlayer();
             if (playerInSightRange && playerInAttackRange)
                 AttackPlayer();
+        }
+
+        private void Start()
+        {
+            lastPlayerPosition = enemyManager.PlayerTransform.position;
+            StartCoroutine(UpdateLastPlayerPosition());
+        }
+        
+        private IEnumerator UpdateLastPlayerPosition()
+        {
+            while (!enemyManager.CharacterHealth.IsDead)
+            {
+                lastPlayerPosition = enemyManager.PlayerTransform.position;
+                yield return new WaitForSeconds(playerPositionCheckIntervals);
+            }
         }
 
         private void Patrolling()
@@ -86,7 +102,7 @@ namespace Enemy
 
         private void ChasePlayer()
         {
-            agent.SetDestination(player.position);
+            agent.SetDestination(lastPlayerPosition);
         }
 
         private void AttackPlayer()
@@ -94,11 +110,11 @@ namespace Enemy
             agent.SetDestination(transform.position);
 
             //prevent look at from changing the x and z rotation
-            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            transform.LookAt(new Vector3(enemyManager.PlayerTransform.position.x, transform.position.y, enemyManager.PlayerTransform.position.z));
 
             if (!alreadyAttacked)
             {
-                // Attack code here
+                enemyManager.EnemyCombat.DetermineIfHit(lastPlayerPosition);
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
