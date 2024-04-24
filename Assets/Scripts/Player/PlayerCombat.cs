@@ -1,5 +1,6 @@
 using System;
 using Characters;
+using UI;
 using UnityEngine;
 using Weapons;
 
@@ -9,6 +10,7 @@ namespace Player
     {
         [SerializeField] private PlayerManager playerManager;
         [SerializeField] private float reloadTimeCost = 1800f; // 30 minutes
+        [SerializeField] private AmmoDisplay ammoDisplay;
 
         protected override void GetComponents()
         {
@@ -19,6 +21,14 @@ namespace Player
             
             if (RaycastOriginTransform == null)
                 RaycastOriginTransform= Camera.main.transform;
+            
+            if (ammoDisplay == null)
+                ammoDisplay = FindObjectOfType<AmmoDisplay>();
+        }
+
+        private void Start()
+        {
+            ammoDisplay.SetValues(MaxAmmo, CurrentAmmo,(int)reloadTimeCost);
         }
 
         public void HandleCombat()
@@ -51,6 +61,8 @@ namespace Player
                 playerManager.PlayerAnimator.Fire();
             
             base.Fire();
+            
+            ammoDisplay.SetAmmo(CurrentAmmo);
         }
 
         
@@ -69,6 +81,8 @@ namespace Player
             playerManager.PlayerLifetime.SpendTime(reloadTimeCost);
             
             base.Reload();
+            
+            ammoDisplay.SetAmmo(CurrentAmmo);
         }
     }
 }
