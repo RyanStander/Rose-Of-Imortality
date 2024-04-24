@@ -13,6 +13,7 @@ namespace Characters
         [SerializeField] protected Transform RaycastOriginTransform;
 
         [SerializeField] protected float FireRate = 0.5f;
+        [SerializeField] protected float WeaponForce = 25f;
 
         [SerializeField] protected int MaxAmmo = 10;
         [SerializeField] protected int Damage = 10;
@@ -53,6 +54,15 @@ namespace Characters
             if (CheckIfHit() is CharacterHealth characterHealth)
             {
                 characterHealth.TakeDamage(Damage);
+                if (characterHealth.IsDead)
+                {
+                    var characterRagdoll = characterHealth.GetComponentInChildren<EnableCharacterRagdoll>();
+                    if (characterRagdoll != null)
+                    {
+                        characterRagdoll.EnableRagdoll();
+                        characterRagdoll.Push( characterHealth.transform.position - transform.position, WeaponForce);
+                    }
+                }
             }
 
             CurrentAmmo--;

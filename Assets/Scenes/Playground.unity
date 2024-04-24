@@ -739,7 +739,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25.775}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 36.8808, y: -0.000027657}
+  m_AnchoredPosition: {x: 36.880737, y: -0.000027657}
   m_SizeDelta: {x: 73.7616, y: 73.7616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340222567
@@ -1487,18 +1487,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2114283753834967213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1111129755 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4613177494289289304, guid: 9538d3e64644b594c8ec98faced59eee,
-    type: 3}
-  m_PrefabInstance: {fileID: 2648558467220098844}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f86ce87198f49169c3763d9db2034d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1177505837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
@@ -3257,11 +3245,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6101492463675497690, guid: 9538d3e64644b594c8ec98faced59eee,
-        type: 3}
-      propertyPath: enemyManager
-      value: 
-      objectReference: {fileID: 1111129755}
     - target: {fileID: 7271322228945467300, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3334,6 +3317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767430451153426387, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: WeaponForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5767430451153426387, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}

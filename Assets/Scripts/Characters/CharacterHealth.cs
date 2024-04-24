@@ -31,7 +31,6 @@ namespace Characters
         protected virtual void Die()
         {
             IsDead = true;
-            Destroy(gameObject);
         }
     }
 }

@@ -35,6 +35,9 @@ namespace Enemy
 
         private void Update()
         {
+            if(CharacterHealth.IsDead)
+                return;
+            
             EnemyController.HandleStates();
             EnemyAnimator.HandleAnimator();
         }

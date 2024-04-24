@@ -124,7 +124,8 @@ GameObject:
   - component: {fileID: 5393215578589016654}
   - component: {fileID: 5393215578589016655}
   - component: {fileID: 5393215578589016640}
-  m_Layer: 8
+  - component: {fileID: 2102423590346864643}
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +220,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2102423590346864643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5393215578589016642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87937d72eedf4ee8b2a27fb2bc0670f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  healthBar: {fileID: 0}
 --- !u!1 &8616685848737228372
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +250,7 @@ GameObject:
   - component: {fileID: 8616685848737228376}
   - component: {fileID: 5856600704938722775}
   - component: {fileID: 5767430451153426387}
+  - component: {fileID: 8091352595609237535}
   m_Layer: 7
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -469,6 +485,8 @@ MonoBehaviour:
   PlayerAnimator: {fileID: 7776301377270075783}
   FirstPersonController: {fileID: 8616685848737228371}
   PlayerCombat: {fileID: 5767430451153426387}
+  PlayerHealth: {fileID: 2102423590346864643}
+  PlayerLifetime: {fileID: 8091352595609237535}
 --- !u!114 &5767430451153426387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,9 +504,27 @@ MonoBehaviour:
   WeaponSfx: {fileID: 6528501673339226899}
   RaycastOriginTransform: {fileID: 0}
   FireRate: 0.05
+  WeaponForce: 10
   MaxAmmo: 10
   Damage: 20
+  FireVariationsCount: 4
   playerManager: {fileID: 5856600704938722775}
+  reloadTimeCost: 1800
+  ammoDisplay: {fileID: 0}
+--- !u!114 &8091352595609237535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a97859150c4207bbe0359bdac36568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingLifetime: 86400
+  lifeTime: {fileID: 0}
 --- !u!1001 &6424518815357443815
 PrefabInstance:
   m_ObjectHideFlags: 0
