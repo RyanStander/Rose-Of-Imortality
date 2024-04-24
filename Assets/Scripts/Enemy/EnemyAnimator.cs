@@ -5,6 +5,5 @@ namespace Enemy
 {
     public class EnemyAnimator : CharacterAnimator
     {
-        
     }
 }

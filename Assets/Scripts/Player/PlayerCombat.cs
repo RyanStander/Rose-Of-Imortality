@@ -58,7 +58,7 @@ namespace Player
         protected override void Fire()
         {
             if(CurrentAmmo>0)
-                playerManager.PlayerAnimator.Fire();
+                playerManager.PlayerAnimator.Fire(playerManager.PlayerCombat.FireVariationsCount);
             
             base.Fire();
             

@@ -32,6 +32,15 @@ namespace Enemy
 
         public void DetermineIfHit(Vector3 playerPosition)
         {
+            if (CurrentAmmo <= 0)
+            {
+                Reload();
+                return;
+            }
+            
+            if(enemyManager.EnemyAnimator.isReloading)
+                return;
+
             // Calculate a random value to determine the accuracy of the shot
             float accuracy = Random.Range(0f, 1f);
 
@@ -54,6 +63,21 @@ namespace Enemy
             }
 
             Fire();
+        }
+
+
+        protected override void Fire()
+        {
+            base.Fire();
+            
+            enemyManager.EnemyAnimator.Fire(enemyManager.EnemyCombat.FireVariationsCount);
+        }
+
+        protected override void Reload()
+        {
+            base.Reload();
+            
+            enemyManager.EnemyAnimator.EmptyReload();
         }
     }
 }

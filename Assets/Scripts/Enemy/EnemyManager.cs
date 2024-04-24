@@ -36,6 +36,7 @@ namespace Enemy
         private void Update()
         {
             EnemyController.HandleStates();
+            EnemyAnimator.HandleAnimator();
         }
     }
 }

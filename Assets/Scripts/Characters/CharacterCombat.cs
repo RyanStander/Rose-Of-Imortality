@@ -16,7 +16,8 @@ namespace Characters
 
         [SerializeField] protected int MaxAmmo = 10;
         [SerializeField] protected int Damage = 10;
-        protected int CurrentAmmo = 10;
+        public int FireVariationsCount = 4;
+        protected int CurrentAmmo;
         protected float TimeStamp;
 
         private void OnValidate()
@@ -34,6 +35,8 @@ namespace Characters
 
             if (WeaponSfx == null)
                 WeaponSfx = GetComponentInChildren<WeaponSfx>();
+            
+            CurrentAmmo = MaxAmmo;
         }
 
         protected virtual void Fire()
@@ -46,7 +49,7 @@ namespace Characters
 
             Muzzle.Flash();
             WeaponSfx.PlayFireSound();
-
+            
             if (CheckIfHit() is CharacterHealth characterHealth)
             {
                 characterHealth.TakeDamage(Damage);

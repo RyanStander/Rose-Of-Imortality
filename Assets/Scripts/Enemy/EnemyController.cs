@@ -58,6 +58,8 @@ namespace Enemy
                 ChasePlayer();
             if (playerInSightRange && playerInAttackRange)
                 AttackPlayer();
+            
+            enemyManager.EnemyAnimator.SetAnimatorForwardSpeed(agent.velocity.magnitude/agent.speed);
         }
 
         private void Start()
@@ -90,8 +92,8 @@ namespace Enemy
 
         private void SearchWalkPoint()
         {
-            float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-            float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+            float randomZ = Random.Range(-walkPointRange, walkPointRange);
+            float randomX = Random.Range(-walkPointRange, walkPointRange);
 
             walkPoint = new Vector3(transform.position.x + randomX, transform.position.y,
                 transform.position.z + randomZ);
@@ -112,7 +114,7 @@ namespace Enemy
             //prevent look at from changing the x and z rotation
             transform.LookAt(new Vector3(enemyManager.PlayerTransform.position.x, transform.position.y, enemyManager.PlayerTransform.position.z));
 
-            if (!alreadyAttacked)
+            if (!alreadyAttacked && !enemyManager.EnemyAnimator.isReloading)
             {
                 enemyManager.EnemyCombat.DetermineIfHit(lastPlayerPosition);
 

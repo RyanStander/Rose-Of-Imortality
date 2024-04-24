@@ -3,7 +3,32 @@ guid: 33d41e6cab03f354baf65dd9127551d7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pmag
+    second: {fileID: 2100000, guid: b6ca8a9a8e9a7c7469c3299d568cfa04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rifle
+    second: {fileID: 2100000, guid: 8b7bb299d383bb741b6b4b8a9177f11b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scope
+    second: {fileID: 2100000, guid: d9c5295ff9f26c740b495652b1703cff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silencer
+    second: {fileID: 2100000, guid: ff87ecf6ebeb50b4dab40be7dc3a6284, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arms
+    second: {fileID: 2100000, guid: 8d7e4ee1aaf78904e881edd7887b7ab9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
