@@ -27,7 +27,7 @@ namespace Enemy
                 CharacterHealth = GetComponentInChildren<CharacterHealth>();
         }
 
-        private void Start()
+        private void Awake()
         {
             if (PlayerTransform == null)
                 PlayerTransform = GameObject.Find("PlayerCapsule").transform;
