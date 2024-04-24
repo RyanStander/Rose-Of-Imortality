@@ -11,13 +11,11 @@ namespace Enemy
         [SerializeField] private EnemyManager enemyManager;
         private Quaternion originalRaycastTransformRotation;
         [SerializeField] private float missedShotRotationRange = 10f;
-
-        [FormerlySerializedAs("accuracy")]
-        [FormerlySerializedAs("accuracyDeduction")]
-        [SerializeField, Range(-1f, 1f),
+        
+        [SerializeField, Range(0f, 1f),
          Tooltip(
-             "The higher the value, the more likely they are to miss, 1 means they will always miss, 0 means they have an equal chance of hitting or missing, -1 means they will always hit.")]
-        private float baseAccuracy = 0.2f;
+             "Percentage chance that the enemy will hit the player. A value of 0.2 means the enemy has a 20% chance to hit the player.")]
+        private float chanceToHit = 0.2f;
 
         protected override void GetComponents()
         {
@@ -37,11 +35,8 @@ namespace Enemy
             // Calculate a random value to determine the accuracy of the shot
             float accuracy = Random.Range(0f, 1f);
 
-            // Modify this value based on the enemy's accuracy
-            float adjustedAccuracy = Mathf.Clamp(accuracy - baseAccuracy, 0f, 1f);
-
             // Check if the adjusted accuracy is enough to hit the player
-            if (adjustedAccuracy > 0.5f)
+            if (chanceToHit > accuracy)
             {
                 // The enemy hits the player
                 Vector3 directionToPlayer = (playerPosition - transform.position).normalized;
