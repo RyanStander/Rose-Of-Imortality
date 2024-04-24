@@ -1,34 +1,51 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Weapons
 {
     public class WeaponSfx : MonoBehaviour
     {
-        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private Transform audioSourceTransform;
+        [SerializeField] private GameObject audioSourcePrefab;
         [SerializeField] private AudioClip fireSound;
         [SerializeField] private AudioClip reloadSound;
         [SerializeField] private AudioClip emptySound;
 
-        private void OnValidate()
+        private List<AudioSource> audioSourcePool = new List<AudioSource>();
+        
+        private void PlayAudioSourcePool(AudioClip audioClip)
         {
-            if (audioSource == null)
-                audioSource = GetComponent<AudioSource>();
+            foreach (var source in audioSourcePool)
+            {
+                if (!source.isPlaying)
+                {
+                    source.gameObject.SetActive(true);
+                    source.clip = audioClip;
+                    source.Play();
+                    return;
+                }
+            }
+
+            var newAudioSource = Instantiate(audioSourcePrefab, audioSourceTransform).GetComponent<AudioSource>();
+            newAudioSource.clip = audioClip;
+            newAudioSource.Play();
+            audioSourcePool.Add(newAudioSource);
         }
 
         public void PlayFireSound()
         {
-            audioSource.PlayOneShot(fireSound);
+            PlayAudioSourcePool(fireSound);
         }
 
         public void PlayReloadSound()
         {
-            audioSource.PlayOneShot(reloadSound);
+            PlayAudioSourcePool(reloadSound);
         }
 
         public void PlayEmptySound()
         {
-            audioSource.PlayOneShot(emptySound);
+            PlayAudioSourcePool(emptySound);
         }
     }
 }
