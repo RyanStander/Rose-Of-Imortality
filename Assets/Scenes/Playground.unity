@@ -398,9 +398,9 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!20 &332748690 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74,
+--- !u!4 &332748693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74,
     type: 3}
   m_PrefabInstance: {fileID: 60889539378096550}
   m_PrefabAsset: {fileID: 0}
@@ -1430,8 +1430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b254531acdd77345bf2f4bf0fa2a82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1728311322}
   playerManager: {fileID: 135756641613574980}
-  animator: {fileID: 1728311322}
 --- !u!1 &1764214107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,13 +2293,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ab8039d7fc1574eacae0913417fa83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Muzzle: {fileID: 2117328439}
+  WeaponSfx: {fileID: 1355985492}
+  RaycastOriginTransform: {fileID: 332748693}
+  FireRate: 0.5
+  MaxAmmo: 10
+  Damage: 10
   playerManager: {fileID: 135756641613574980}
-  playerCamera: {fileID: 332748690}
-  muzzle: {fileID: 2117328439}
-  weaponSfx: {fileID: 1355985492}
-  fireRate: 0.05
-  maxAmmo: 10
-  damage: 20
 --- !u!1 &2114283753834967212
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,9 +46,10 @@ namespace Player
         
         protected override void Fire()
         {
-            base.Fire();
+            if(CurrentAmmo>0)
+                playerManager.PlayerAnimator.Fire();
             
-            playerManager.PlayerAnimator.Fire();
+            base.Fire();
         }
 
         

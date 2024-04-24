@@ -8,6 +8,7 @@ namespace Characters
     public class CharacterCombat : MonoBehaviour
     {
         [SerializeField] protected Muzzle Muzzle;
+        [SerializeField] protected WeaponVfx WeaponVfx;
         [SerializeField] protected WeaponSfx WeaponSfx;
         [SerializeField] protected Transform RaycastOriginTransform;
 
@@ -28,10 +29,13 @@ namespace Characters
             if (Muzzle == null)
                 Muzzle = GetComponentInChildren<Muzzle>();
 
+            if (WeaponVfx == null)
+                WeaponVfx = GetComponentInChildren<WeaponVfx>();
+
             if (WeaponSfx == null)
-                WeaponSfx = GetComponentInChildren<WeaponSfx>(); 
+                WeaponSfx = GetComponentInChildren<WeaponSfx>();
         }
-        
+
         protected virtual void Fire()
         {
             if (CurrentAmmo <= 0)
@@ -39,18 +43,18 @@ namespace Characters
                 Reload();
                 return;
             }
-            
+
             Muzzle.Flash();
             WeaponSfx.PlayFireSound();
-            
+
             if (CheckIfHit() is CharacterHealth characterHealth)
             {
                 characterHealth.TakeDamage(Damage);
             }
-            
+
             CurrentAmmo--;
         }
-        
+
         protected virtual void Reload()
         {
             CurrentAmmo = MaxAmmo;
@@ -65,6 +69,8 @@ namespace Characters
                 {
                     return characterHealth;
                 }
+
+                WeaponVfx.SpawnBulletHole(hit);
             }
 
             return null;
