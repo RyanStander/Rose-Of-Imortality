@@ -167,6 +167,8 @@ MonoBehaviour:
   EnemyAnimator: {fileID: 0}
   EnemyCombat: {fileID: 8272729289529070468}
   EnemyController: {fileID: 6101492463675497690}
+  CharacterHealth: {fileID: 256951249508333566}
+  PlayerTransform: {fileID: 0}
 --- !u!114 &6101492463675497690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,13 +183,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6776254515235273103}
   enemyManager: {fileID: 4613177494289289304}
-  player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  playerPositionCheckIntervals: 0.5
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 0.5
@@ -215,7 +217,8 @@ MonoBehaviour:
   MaxAmmo: 10
   Damage: 10
   enemyManager: {fileID: 4613177494289289304}
-  rotationRange: 10
+  missedShotRotationRange: 10
+  chanceToHit: 0.2
 --- !u!114 &256951249508333566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,3 +603,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletHolePrefab: {fileID: 100006, guid: 9e95c7b2183a4f345aaf86846f8f1918, type: 3}
+  bulletTrailPrefab: {fileID: 3318963185808516846, guid: 7c28ae1aac79ee847a35a57e1bccf99a,
+    type: 3}

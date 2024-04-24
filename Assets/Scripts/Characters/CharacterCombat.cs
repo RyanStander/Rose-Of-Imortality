@@ -71,6 +71,7 @@ namespace Characters
                 }
 
                 WeaponVfx.SpawnBulletHole(hit);
+                WeaponVfx.SpawnBulletTrail(RaycastOriginTransform);
             }
 
             return null;

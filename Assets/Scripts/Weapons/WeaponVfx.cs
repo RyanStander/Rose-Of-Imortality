@@ -7,6 +7,7 @@ namespace Weapons
     public class WeaponVfx : MonoBehaviour
     {
         [SerializeField] private GameObject bulletHolePrefab;
+        [SerializeField] private GameObject bulletTrailPrefab;
 
         public void SpawnBulletHole(RaycastHit hit)
         {
@@ -21,6 +22,14 @@ namespace Weapons
                 return;
 
             Instantiate(bulletHolePrefab, hit.point, Quaternion.LookRotation(hit.normal));
+        }
+        
+        public void SpawnBulletTrail(Transform raycastOriginTransform)
+        {
+            if (bulletTrailPrefab == null)
+                return;
+            
+            Instantiate(bulletTrailPrefab, raycastOriginTransform.position, raycastOriginTransform.rotation);
         }
     }
 }
