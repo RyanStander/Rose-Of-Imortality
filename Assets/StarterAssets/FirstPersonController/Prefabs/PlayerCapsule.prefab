@@ -506,7 +506,7 @@ MonoBehaviour:
   FireRate: 0.05
   WeaponForce: 10
   MaxAmmo: 10
-  Damage: 20
+  Damage: 50
   FireVariationsCount: 4
   playerManager: {fileID: 5856600704938722775}
   reloadTimeCost: 1800
