@@ -1,28 +1,34 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Characters
 {
     public class CharacterHealth : MonoBehaviour
     {
-        [SerializeField] private int maxHealth = 100;
-        private int currentHealth;
-        public bool IsDead { get; private set; }
+        [SerializeField] protected int MaxHealth = 100;
+        protected int CurrentHealth;
+        public bool IsDead { get; protected set; }
 
         private void Start()
         {
-            currentHealth = maxHealth;
+            Setup();
         }
 
-        public void TakeDamage(int damage)
+        protected virtual void Setup()
         {
-            currentHealth -= damage;
-            if (currentHealth <= 0)
+            CurrentHealth = MaxHealth;
+        }
+
+        public virtual void TakeDamage(int damage)
+        {
+            CurrentHealth -= damage;
+            if (CurrentHealth <= 0)
             {
                 Die();
             }
         }
 
-        private void Die()
+        protected virtual void Die()
         {
             IsDead = true;
             Destroy(gameObject);

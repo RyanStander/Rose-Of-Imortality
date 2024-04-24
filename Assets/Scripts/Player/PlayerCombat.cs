@@ -8,6 +8,7 @@ namespace Player
     public class PlayerCombat : CharacterCombat
     {
         [SerializeField] private PlayerManager playerManager;
+        [SerializeField] private float reloadTimeCost = 1800f; // 30 minutes
 
         protected override void GetComponents()
         {
@@ -64,6 +65,8 @@ namespace Player
             {
                 playerManager.PlayerAnimator.EmptyReload();
             }
+            
+            playerManager.PlayerLifetime.SpendTime(reloadTimeCost);
             
             base.Reload();
         }

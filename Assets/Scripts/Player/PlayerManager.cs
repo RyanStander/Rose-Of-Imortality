@@ -13,6 +13,8 @@ namespace Player
         public PlayerAnimator PlayerAnimator;
         public FirstPersonController FirstPersonController;
         public PlayerCombat PlayerCombat;
+        public PlayerHealth PlayerHealth;
+        public PlayerLifetime PlayerLifetime;
 
         private void OnValidate()
         {
@@ -30,6 +32,12 @@ namespace Player
             
             if (PlayerCombat == null)
                 PlayerCombat = GetComponent<PlayerCombat>();
+            
+            if (PlayerHealth == null)
+                PlayerHealth = GetComponentInChildren<PlayerHealth>();
+            
+            if (PlayerLifetime == null)
+                PlayerLifetime = GetComponent<PlayerLifetime>();
         }
 
         private void Update()
