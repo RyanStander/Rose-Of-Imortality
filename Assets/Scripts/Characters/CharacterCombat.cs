@@ -11,6 +11,7 @@ namespace Characters
         [SerializeField] protected WeaponVfx WeaponVfx;
         [SerializeField] protected WeaponSfx WeaponSfx;
         [SerializeField] protected Transform RaycastOriginTransform;
+        [SerializeField] protected LayerMask LayersToIgnore;
 
         [SerializeField] protected float FireRate = 0.5f;
         [SerializeField] protected float WeaponForce = 25f;
@@ -76,7 +77,7 @@ namespace Characters
 
         private CharacterHealth CheckIfHit()
         {
-            if (Physics.Raycast(RaycastOriginTransform.position, RaycastOriginTransform.forward, out var hit, 100))
+            if (Physics.Raycast(RaycastOriginTransform.position, RaycastOriginTransform.forward, out var hit, 100,LayersToIgnore))
             {
                 if (hit.transform.TryGetComponent(out CharacterHealth characterHealth))
                 {

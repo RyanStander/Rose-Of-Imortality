@@ -783,6 +783,9 @@ MonoBehaviour:
   WeaponVfx: {fileID: 6308719733791381695}
   WeaponSfx: {fileID: 4702558850361143458}
   RaycastOriginTransform: {fileID: 5833008636508139525}
+  LayersToIgnore:
+    serializedVersion: 2
+    m_Bits: 979
   FireRate: 0.1
   WeaponForce: 25
   MaxAmmo: 25

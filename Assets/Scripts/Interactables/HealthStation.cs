@@ -37,7 +37,8 @@ namespace Interactables
             if (clips.Count > 0)
             {
                 var randomIndex = UnityEngine.Random.Range(0, clips.Count);
-                audioSource.PlayOneShot(clips[randomIndex]);
+                audioSource.clip = clips[randomIndex];
+                audioSource.Play();
             }
         }
 
