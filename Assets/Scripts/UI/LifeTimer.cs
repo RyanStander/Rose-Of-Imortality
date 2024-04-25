@@ -9,6 +9,7 @@ namespace UI
         //TODO: we'd like to show it as years-weeks-days-hours-minutes-seconds
         
         [SerializeField] private TextMeshProUGUI lifeTimeText;
+        [SerializeField] private float lifetimeSpeed = 2f;
         private float currentLifetime;
         private float targetLifetime;
         private void OnValidate()
@@ -27,7 +28,7 @@ namespace UI
         {
             if (lifeTimeText != null)
             {
-                currentLifetime = Mathf.Lerp(currentLifetime, targetLifetime, 0.5f * Time.deltaTime);
+                currentLifetime = Mathf.Lerp(currentLifetime, targetLifetime, lifetimeSpeed * Time.deltaTime);
                 
                 int years = Mathf.FloorToInt(currentLifetime / 31536000f);
                 int weeks = Mathf.FloorToInt(currentLifetime / 604800f) % 52;

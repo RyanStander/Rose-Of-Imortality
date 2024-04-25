@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 5767430451153426387}
   - component: {fileID: 8091352595609237535}
   - component: {fileID: 214098542752043539}
+  - component: {fileID: 5274127157923094905}
   m_Layer: 7
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -575,6 +576,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 5856600704938722775}
+--- !u!95 &5274127157923094905
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6424518815357443815
 PrefabInstance:
   m_ObjectHideFlags: 0

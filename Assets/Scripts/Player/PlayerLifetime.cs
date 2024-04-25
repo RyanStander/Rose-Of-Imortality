@@ -29,13 +29,16 @@ namespace Player
         public void SpendTime(float seconds)
         {
             currentLifetime -= seconds;
+            
+            if(currentLifetime < 0f)
+                currentLifetime = 0f;
+            
             lifeTime.UpdateLifetimeUI(currentLifetime);
         }
         
         private void TickLifetime()
         {
-            currentLifetime -= 1f;
-            lifeTime.UpdateLifetimeUI(currentLifetime);
+            SpendTime(1f);
 
             if (currentLifetime <= 0f)
             {
