@@ -28,6 +28,12 @@ namespace Player
             Debug.Log("Player took damage: " + damage);
             healthBar.SetHealth(CurrentHealth);
         }
+        
+        public override void Heal(int healAmount)
+        {
+            base.Heal(healAmount);
+            healthBar.SetHealth(CurrentHealth);
+        }
 
         protected override void Die()
         {

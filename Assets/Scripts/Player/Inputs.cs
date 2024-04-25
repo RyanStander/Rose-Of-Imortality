@@ -12,6 +12,7 @@ namespace Player
 		public bool sprint;
 		public bool fire;
 		public bool reload;
+		public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -53,6 +54,11 @@ namespace Player
 		{
 			ReloadInput(value.isPressed);
 		}
+		
+		public void OnInteract(InputValue value)
+		{
+			InteractInput(value.isPressed);
+		}
 #endif
 
 
@@ -85,6 +91,11 @@ namespace Player
 		{
 			reload = newReloadState;
 		}
+
+		public void InteractInput(bool newInteractState)
+		{
+			interact = newInteractState;
+		}
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{
@@ -100,6 +111,7 @@ namespace Player
 		{
 			fire = false;
 			reload = false;
+			interact = false;
 		}
 	}
 	

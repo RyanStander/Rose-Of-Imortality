@@ -27,6 +27,15 @@ namespace Characters
                 Die();
             }
         }
+        
+        public virtual void Heal(int healAmount)
+        {
+            CurrentHealth += healAmount;
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
+        }
 
         protected virtual void Die()
         {

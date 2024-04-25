@@ -15,6 +15,7 @@ namespace Player
         public PlayerCombat PlayerCombat;
         public PlayerHealth PlayerHealth;
         public PlayerLifetime PlayerLifetime;
+        public PlayerInteraction PlayerInteraction;
 
         private void OnValidate()
         {
@@ -38,12 +39,16 @@ namespace Player
             
             if (PlayerLifetime == null)
                 PlayerLifetime = GetComponent<PlayerLifetime>();
+            
+            if (PlayerInteraction == null)
+                PlayerInteraction = GetComponent<PlayerInteraction>();
         }
 
         private void Update()
         {
             PlayerCombat.HandleCombat();
             PlayerAnimator.HandleAnimator();
+            PlayerInteraction.HandleInteraction();
         }
 
         private void LateUpdate()

@@ -34,6 +34,11 @@ namespace StarterAssets
         {
             Inputs.ReloadInput(virtualReloadState);
         }
+        
+        public void VirtualInteractInput(bool virtualInteractState)
+        {
+            Inputs.InteractInput(virtualInteractState);
+        }
 
         public void VirtualSprintInput(bool virtualSprintState)
         {
