@@ -15,6 +15,7 @@ namespace Enemy
 
         [SerializeField]private float playerPositionCheckIntervals=0.5f;
         private Vector3 lastPlayerPosition;
+        private bool stoppedMoving;
 
         #region Patrolling
 
@@ -75,6 +76,17 @@ namespace Enemy
                 lastPlayerPosition = enemyManager.PlayerTransform.position;
                 yield return new WaitForSeconds(playerPositionCheckIntervals);
             }
+        }
+
+        public void StopMoving()
+        {
+            if(stoppedMoving)
+                return;
+            
+            agent.SetDestination(transform.position);
+            agent.velocity = Vector3.zero;
+            agent.enabled = false;
+            stoppedMoving = true;
         }
 
         private void Patrolling()
