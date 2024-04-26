@@ -27,6 +27,11 @@ namespace Characters
             GetComponents();
         }
 
+        private void Start()
+        {
+            CurrentAmmo = MaxAmmo;
+        }
+
         protected virtual void GetComponents()
         {
             if (Muzzle == null)
@@ -37,8 +42,6 @@ namespace Characters
 
             if (WeaponSfx == null)
                 WeaponSfx = GetComponentInChildren<WeaponSfx>();
-            
-            CurrentAmmo = MaxAmmo;
         }
 
         protected virtual void Fire()

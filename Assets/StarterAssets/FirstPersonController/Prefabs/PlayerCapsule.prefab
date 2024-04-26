@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   healthBar: {fileID: 0}
+  playerManager: {fileID: 5856600704938722775}
 --- !u!1 &8616685848737228372
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +414,7 @@ GameObject:
   - component: {fileID: 214098542752043539}
   - component: {fileID: 5274127157923094905}
   - component: {fileID: 3723107846123663293}
+  - component: {fileID: 7627706946672822498}
   m_Layer: 7
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -652,6 +654,7 @@ MonoBehaviour:
   PlayerHealth: {fileID: 2102423590346864643}
   PlayerLifetime: {fileID: 8091352595609237535}
   PlayerInteraction: {fileID: 214098542752043539}
+  PlayerDeathHandler: {fileID: 7627706946672822498}
 --- !u!114 &5767430451153426387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,6 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a97859150c4207bbe0359bdac36568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 5856600704938722775}
   startingLifetime: 86400
   lifeTime: {fileID: 0}
 --- !u!114 &214098542752043539
@@ -745,9 +749,27 @@ PlayableDirector:
   - key: {fileID: -8625030834195933755, guid: c9d836e77f694e648a19411b054f44dd, type: 2}
     value: {fileID: 5274127157923094905}
   - key: {fileID: 3141846772733877579, guid: c9d836e77f694e648a19411b054f44dd, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 5639902286743980914}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &7627706946672822498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f745aa0b54614d9b9ce1c53de51f7309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 5856600704938722775}
+  fadeOutPanel: {fileID: 0}
+  fadeOutTime: 1
+  mainMenuSceneName: MainMenu
+  playableDirector: {fileID: 3723107846123663293}
+  deathTimeline: {fileID: 11400000, guid: c9d836e77f694e648a19411b054f44dd, type: 2}
 --- !u!1001 &6424518815357443815
 PrefabInstance:
   m_ObjectHideFlags: 0
