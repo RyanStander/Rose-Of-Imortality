@@ -53,6 +53,10 @@ public class QuickTimeEvent : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                //give player 998 years of lifespan
+                var lifespan = playerTransform.GetComponent<Player.PlayerManager>().PlayerLifetime;
+                lifespan.SpendTime(-31536000f * 998f);
+                
                 playableDirector.playableAsset = selfishTimeline;
                 playableDirector.Play();
                 quickTimeUi.SetActive(false);
