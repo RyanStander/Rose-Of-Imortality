@@ -25,9 +25,11 @@ namespace Player
             if (ammoDisplay == null)
                 ammoDisplay = FindObjectOfType<AmmoDisplay>();
         }
-
-        private void Start()
+        
+        protected override void StartSetup()
         {
+            base.StartSetup();
+            
             ammoDisplay.SetValues(MaxAmmo, CurrentAmmo,(int)reloadTimeCost);
         }
 

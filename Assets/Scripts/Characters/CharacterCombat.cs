@@ -40,6 +40,17 @@ namespace Characters
             
             CurrentAmmo = MaxAmmo;
         }
+        
+        
+        private void Start()
+        {
+            StartSetup();
+        }
+
+        protected virtual void StartSetup()
+        {
+            CurrentAmmo = MaxAmmo;
+        }
 
         protected virtual void Fire()
         {

@@ -25,8 +25,10 @@ namespace Enemy
                 enemyManager = GetComponentInParent<EnemyManager>();
         }
 
-        private void Start()
+        protected override void StartSetup()
         {
+            base.StartSetup();
+            
             originalRaycastTransformRotation = RaycastOriginTransform.localRotation;
         }
 
