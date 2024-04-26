@@ -9,14 +9,19 @@ namespace Player
     /// </summary>
     public class PlayerLifetime : MonoBehaviour
     {
+        [SerializeField] private PlayerManager playerManager;
         [SerializeField] private float startingLifetime = 86400f;
         [SerializeField] private LifeTimer lifeTime;
         private float currentLifetime;
+        private bool isDead;
 
         private void OnValidate()
         {
             if (lifeTime == null)
                 lifeTime = FindObjectOfType<LifeTimer>();
+            
+            if (playerManager == null)
+                playerManager = GetComponent<PlayerManager>();
         }
 
         private void Start()
@@ -43,6 +48,11 @@ namespace Player
             if (currentLifetime <= 0f)
             {
                 Debug.Log("Out of lifetime!");
+                if (!isDead)
+                {
+                    isDead = true;
+                    playerManager.PlayerDeathHandler.HandleDeath();
+                }
             }
         }
     }

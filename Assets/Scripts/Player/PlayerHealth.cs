@@ -8,9 +8,13 @@ namespace Player
     public class PlayerHealth : CharacterHealth
     {
         [SerializeField] private HealthBar healthBar;
+        [SerializeField] private PlayerManager playerManager;
 
         private void OnValidate()
         {
+            if (playerManager == null)
+                playerManager = FindObjectOfType<PlayerManager>();
+
             if (healthBar == null)
                 healthBar = FindObjectOfType<HealthBar>();
         }
@@ -18,7 +22,7 @@ namespace Player
         protected override void Setup()
         {
             base.Setup();
-            
+
             healthBar.SetMaxHealth(MaxHealth);
         }
 
@@ -28,7 +32,7 @@ namespace Player
             Debug.Log("Player took damage: " + damage);
             healthBar.SetHealth(CurrentHealth);
         }
-        
+
         public override void Heal(int healAmount)
         {
             base.Heal(healAmount);
@@ -37,8 +41,10 @@ namespace Player
 
         protected override void Die()
         {
+            if (!IsDead)
+                playerManager.PlayerDeathHandler.HandleDeath();
+
             IsDead = true;
-            Debug.Log("Player is dead!");
         }
     }
 }

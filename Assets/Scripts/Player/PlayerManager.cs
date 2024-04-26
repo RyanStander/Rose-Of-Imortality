@@ -16,6 +16,7 @@ namespace Player
         public PlayerHealth PlayerHealth;
         public PlayerLifetime PlayerLifetime;
         public PlayerInteraction PlayerInteraction;
+        public PlayerDeathHandler PlayerDeathHandler;
 
         private void OnValidate()
         {
@@ -42,6 +43,9 @@ namespace Player
             
             if (PlayerInteraction == null)
                 PlayerInteraction = GetComponent<PlayerInteraction>();
+            
+            if (PlayerDeathHandler == null)
+                PlayerDeathHandler = GetComponent<PlayerDeathHandler>();
         }
 
         private void Update()
