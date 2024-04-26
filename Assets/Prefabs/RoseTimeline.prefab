@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1775495332995414360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1594622759445232874}
+  - component: {fileID: 8162025038294279438}
+  - component: {fileID: 3496625864476013412}
+  - component: {fileID: 9161368498197513571}
+  m_Layer: 11
+  m_Name: RoseTimeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1594622759445232874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775495332995414360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.65, y: 2.952, z: -79.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &8162025038294279438
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775495332995414360}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 8805313299257029941, guid: 11d656456b3693c4c97ff36bae9bbf52, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9116086813667262712, guid: 11d656456b3693c4c97ff36bae9bbf52, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -589716206181905114, guid: 11d656456b3693c4c97ff36bae9bbf52, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -5721574891782641466, guid: 651c6f3b9671d7540aff053426ed24cd, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5740336895941800800, guid: 651c6f3b9671d7540aff053426ed24cd, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 9186523053405496047, guid: 651c6f3b9671d7540aff053426ed24cd, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4823651308146814529, guid: 70547db577e711942b8f4b56c7f50c57, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3381781823767359263, guid: 70547db577e711942b8f4b56c7f50c57, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 237050527214611622, guid: 70547db577e711942b8f4b56c7f50c57, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &3496625864476013412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775495332995414360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546b5d55433e40a6806089fd22a01f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  playableDirector: {fileID: 8162025038294279438}
+  quickTimeEventTimeline: {fileID: 11400000, guid: 11d656456b3693c4c97ff36bae9bbf52,
+    type: 2}
+  objectToEnableOnQteStart:
+  - {fileID: 0}
+  objectToDisableOnQteStart:
+  - {fileID: 0}
+  - {fileID: 0}
+  quickTimeUi: {fileID: 0}
+  selflessTimeline: {fileID: 11400000, guid: 70547db577e711942b8f4b56c7f50c57, type: 2}
+  objectToEnableOnSelflessStart:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  objectToDisableOnSelflessStart:
+  - {fileID: 0}
+  selfishTimeline: {fileID: 11400000, guid: 651c6f3b9671d7540aff053426ed24cd, type: 2}
+  objectToEnableOnSelfishStart:
+  - {fileID: 0}
+  - {fileID: 0}
+  objectToDisableOnSelfishStart:
+  - {fileID: 0}
+--- !u!135 &9161368498197513571
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775495332995414360}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3.66
+  m_Center: {x: 0, y: 0, z: 0}
