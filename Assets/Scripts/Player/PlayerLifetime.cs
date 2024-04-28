@@ -18,7 +18,7 @@ namespace Player
         private void OnValidate()
         {
             if (lifeTime == null)
-                lifeTime = FindObjectOfType<LifeTimer>();
+                lifeTime = GetComponentInChildren<LifeTimer>();
             
             if (playerManager == null)
                 playerManager = GetComponent<PlayerManager>();

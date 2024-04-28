@@ -13,6 +13,7 @@ namespace Player
 		public bool fire;
 		public bool reload;
 		public bool interact;
+		public bool checkArm;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -59,6 +60,11 @@ namespace Player
 		{
 			InteractInput(value.isPressed);
 		}
+		
+		public void OnCheckArm(InputValue value)
+		{
+			CheckArmInput(value.isPressed);
+		}
 #endif
 
 
@@ -95,6 +101,11 @@ namespace Player
 		public void InteractInput(bool newInteractState)
 		{
 			interact = newInteractState;
+		}
+		
+		public void CheckArmInput(bool newCheckArmState)
+		{
+			checkArm = newCheckArmState;
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)

@@ -27,7 +27,7 @@ namespace Characters
                 Animator = GetComponent<Animator>();
         }
         
-        public void HandleAnimator()
+        public virtual void HandleAnimator()
         {
             isReloading=Animator.GetBool(IsReloading);
         }

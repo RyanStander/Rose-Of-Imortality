@@ -45,6 +45,16 @@ namespace Player
                 currentInteractable.Interact();
                 playerManager.Inputs.interact = false;
             }
+            
+            CheckArm();
+        }
+
+        private void CheckArm()
+        {
+            if (playerManager.Inputs.checkArm)
+            {
+                playerManager.PlayerAnimator.CheckArm();
+            }
         }
     }
 }

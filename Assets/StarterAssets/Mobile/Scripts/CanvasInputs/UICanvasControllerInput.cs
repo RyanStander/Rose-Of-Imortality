@@ -39,6 +39,11 @@ namespace StarterAssets
         {
             Inputs.InteractInput(virtualInteractState);
         }
+        
+        public void VirtualCheckArmInput(bool virtualCheckArmState)
+        {
+            Inputs.CheckArmInput(virtualCheckArmState);
+        }
 
         public void VirtualSprintInput(bool virtualSprintState)
         {
