@@ -875,7 +875,7 @@ PrefabInstance:
     - target: {fileID: 7533918500886023134, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3079,7 +3079,7 @@ PrefabInstance:
     - target: {fileID: 7533918500886023134, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3253,7 +3253,7 @@ PrefabInstance:
     - target: {fileID: 7533918500886023134, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3722,7 +3722,7 @@ PrefabInstance:
     - target: {fileID: 7533918500886023134, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5639,10 +5639,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 228907153487041136, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
+    - target: {fileID: 559587356682284577, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574246758401919923, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888111310856884307, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195448272786543480, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310417397504628996, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549015228146804127, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114438311401329770, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719439431676623188, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6059832358368076989, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079154403127562578, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974552767415022512, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
     - target: {fileID: 7271322228945467300, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.19
+      value: -1.26
       objectReference: {fileID: 0}
     - target: {fileID: 7271322228945467300, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
@@ -5652,7 +5712,7 @@ PrefabInstance:
     - target: {fileID: 7271322228945467300, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.14
+      value: 10.55
       objectReference: {fileID: 0}
     - target: {fileID: 7271322228945467300, guid: 9538d3e64644b594c8ec98faced59eee,
         type: 3}
@@ -5693,6 +5753,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272729289529070468, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: MaxAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960599956631299323, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044069077919411414, guid: 9538d3e64644b594c8ec98faced59eee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

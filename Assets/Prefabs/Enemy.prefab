@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 6782850786947270061}
   - component: {fileID: 4114438311401329770}
   - component: {fileID: 6776254515235273103}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,11 +787,13 @@ MonoBehaviour:
   RaycastOriginTransform: {fileID: 5833008636508139525}
   LayersToIgnore:
     serializedVersion: 2
-    m_Bits: 2358
+    m_Bits: 2998
   FireRate: 0.1
   WeaponForce: 25
   MaxAmmo: 25
   Damage: 2
+  HeadShotMultiplier: 2
+  LimbDamageMultiplier: 0.5
   FireVariationsCount: 4
   enemyManager: {fileID: 4613177494289289304}
   missedShotRotationRange: 10
@@ -1495,7 +1497,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.09
   m_Height: 0.4014521
@@ -1597,7 +1599,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.06
   m_Height: 0.4594425
@@ -1699,7 +1701,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.4017435, y: 0.114230916, z: 0.21160209}
   m_Center: {x: -0.0063709468, y: 0.057115335, z: 0.010200125}
@@ -1799,7 +1801,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.057950623
   m_Height: 0.2318025
@@ -1901,7 +1903,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.06
   m_Height: 0.4467864
@@ -2003,7 +2005,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.10362146
   m_Center: {x: 0, y: 0.10362146, z: 0}
@@ -2115,7 +2117,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.057950933
   m_Height: 0.23180373
@@ -2217,7 +2219,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.27605295, y: 0.43518117, z: 0.27418834}
   m_Center: {x: 0.0022056848, y: 0.15795699, z: -0.027374893}
@@ -2325,7 +2327,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.06
   m_Height: 0.45632696
@@ -2427,7 +2429,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.08
   m_Height: 0.45969066
@@ -2529,7 +2531,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.09
   m_Height: 0.40144172

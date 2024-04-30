@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - FxTemporaire
   - Interactable
+  - Head
+  - Limb
   layers:
   - Default
   - TransparentFX

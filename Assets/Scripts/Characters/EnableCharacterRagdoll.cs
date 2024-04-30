@@ -10,17 +10,18 @@ namespace Characters
         private void OnValidate()
         {
             DisableRagdoll();
+            
+            //enable all ragdoll components
+            var colliders = GetComponentsInChildren<Collider>();
+            foreach (var collider in colliders)
+            {
+                collider.enabled = true;
+            }
         }
         
         public void DisableRagdoll()
         {
-            var colliders = GetComponentsInChildren<Collider>();
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
-
-            foreach (var collider in colliders)
-            {
-                collider.enabled = false;
-            }
 
             foreach (var rigidbody in rigidbodies)
             {
@@ -30,14 +31,8 @@ namespace Characters
 
         public void EnableRagdoll()
         {
-            var colliders = GetComponentsInChildren<Collider>();
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
             GetComponent<Animator>().enabled = false;
-
-            foreach (var collider in colliders)
-            {
-                collider.enabled = true;
-            }
 
             foreach (var rigidbody in rigidbodies)
             {

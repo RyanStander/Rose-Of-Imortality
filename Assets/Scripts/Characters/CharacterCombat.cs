@@ -18,9 +18,21 @@ namespace Characters
 
         [SerializeField] protected int MaxAmmo = 10;
         [SerializeField] protected int Damage = 10;
+        [SerializeField] protected float HeadShotMultiplier = 2;
+        [SerializeField] protected float LimbDamageMultiplier = 0.5f;
         public int FireVariationsCount = 4;
         protected int CurrentAmmo;
         protected float TimeStamp;
+
+
+        private BodyPart shotBodyPart;
+
+        private enum BodyPart
+        {
+            None,
+            Head,
+            Limb
+        }
 
         private void OnValidate()
         {
@@ -37,11 +49,11 @@ namespace Characters
 
             if (WeaponSfx == null)
                 WeaponSfx = GetComponentInChildren<WeaponSfx>();
-            
+
             CurrentAmmo = MaxAmmo;
         }
-        
-        
+
+
         private void Start()
         {
             StartSetup();
@@ -62,17 +74,24 @@ namespace Characters
 
             Muzzle.Flash();
             WeaponSfx.PlayFireSound();
-            
+
             if (CheckIfHit() is CharacterHealth characterHealth)
             {
-                characterHealth.TakeDamage(Damage);
+                var multiplier = shotBodyPart switch
+                {
+                    BodyPart.Head => HeadShotMultiplier,
+                    BodyPart.Limb => LimbDamageMultiplier,
+                    _ => 1f
+                };
+
+                characterHealth.TakeDamage((int)(Damage * multiplier));
                 if (characterHealth.IsDead)
                 {
                     var characterRagdoll = characterHealth.GetComponentInChildren<EnableCharacterRagdoll>();
                     if (characterRagdoll != null)
                     {
                         characterRagdoll.EnableRagdoll();
-                        characterRagdoll.Push( characterHealth.transform.position - transform.position, WeaponForce);
+                        characterRagdoll.Push(characterHealth.transform.position - transform.position, WeaponForce);
                     }
                 }
             }
@@ -88,10 +107,20 @@ namespace Characters
 
         private CharacterHealth CheckIfHit()
         {
-            if (Physics.Raycast(RaycastOriginTransform.position, RaycastOriginTransform.forward, out var hit, 100,~LayersToIgnore))
+            if (Physics.Raycast(RaycastOriginTransform.position, RaycastOriginTransform.forward, out var hit, 100,
+                    ~LayersToIgnore))
             {
-                if (hit.transform.TryGetComponent(out CharacterHealth characterHealth))
+                //get character health in parent
+                var characterHealth = hit.transform.GetComponentInParent<CharacterHealth>();
+                if (characterHealth != null)
                 {
+                    if (hit.transform.CompareTag(BodyPart.Head.ToString()))
+                        shotBodyPart = BodyPart.Head;
+                    else if (hit.transform.CompareTag(BodyPart.Limb.ToString()))
+                        shotBodyPart = BodyPart.Limb;
+                    else
+                        shotBodyPart = BodyPart.None;
+
                     return characterHealth;
                 }
 

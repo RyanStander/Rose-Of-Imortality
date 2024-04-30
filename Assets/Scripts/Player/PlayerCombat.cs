@@ -86,5 +86,16 @@ namespace Player
             
             ammoDisplay.SetAmmo(CurrentAmmo);
         }
+
+        private void OnDrawGizmos()
+        {
+            //draw a ray from the weapon forward
+            Gizmos.color = Color.magenta;
+            
+            if (RaycastOriginTransform == null)
+                return;
+            
+            Gizmos.DrawRay(RaycastOriginTransform.position, RaycastOriginTransform.forward * 100);
+        }
     }
 }

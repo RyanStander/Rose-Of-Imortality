@@ -958,7 +958,7 @@ MonoBehaviour:
   RaycastOriginTransform: {fileID: 0}
   LayersToIgnore:
     serializedVersion: 2
-    m_Bits: 2358
+    m_Bits: 2998
   FireRate: 0.05
   WeaponForce: 10
   MaxAmmo: 10
