@@ -88,7 +88,7 @@ namespace Characters
 
         private CharacterHealth CheckIfHit()
         {
-            if (Physics.Raycast(RaycastOriginTransform.position, RaycastOriginTransform.forward, out var hit, 100,LayersToIgnore))
+            if (Physics.Raycast(RaycastOriginTransform.position, RaycastOriginTransform.forward, out var hit, 100,~LayersToIgnore))
             {
                 if (hit.transform.TryGetComponent(out CharacterHealth characterHealth))
                 {

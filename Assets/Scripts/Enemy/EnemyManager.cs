@@ -1,6 +1,7 @@
 ﻿using System;
 using Characters;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Enemy
 {
@@ -11,6 +12,10 @@ namespace Enemy
         public EnemyController EnemyController;
         public CharacterHealth CharacterHealth;
         public Transform PlayerTransform;
+
+        public float SightRange = 30, SightAngle = 35;
+        public float AudibleRange = 20;
+        public float AttackRange =12;
 
         private void OnValidate()
         {

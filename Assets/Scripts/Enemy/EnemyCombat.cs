@@ -81,5 +81,28 @@ namespace Enemy
             
             enemyManager.EnemyAnimator.EmptyReload();
         }
+        
+        public bool CanSeePlayer()
+        {
+            //ignore the interactable layer
+            if (Physics.Raycast(RaycastOriginTransform.position, enemyManager.PlayerTransform.position - transform.position, out RaycastHit hit, enemyManager.SightRange, ~LayersToIgnore))
+            {
+                Debug.Log( "Layer name: " + LayerMask.LayerToName(hit.transform.gameObject.layer)+ " Name: " + hit.transform.name);
+                if (hit.transform.CompareTag("Player"))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            //draw the raycast to player
+            if (enemyManager.PlayerTransform == null)
+                return;
+  
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(RaycastOriginTransform.position, enemyManager.PlayerTransform.position - transform.position);
+        }
     }
 }

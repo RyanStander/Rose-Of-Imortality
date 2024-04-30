@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Enemy
@@ -13,7 +14,7 @@ namespace Enemy
 
         [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
 
-        [SerializeField]private float playerPositionCheckIntervals=0.5f;
+        [SerializeField] private float playerPositionCheckIntervals = 0.5f;
         private Vector3 lastPlayerPosition;
         private bool stoppedMoving;
 
@@ -34,8 +35,10 @@ namespace Enemy
 
         #region States
 
-        [SerializeField] private float sightRange, attackRange;
-        [SerializeField] private bool playerInSightRange, playerInAttackRange;
+        [FormerlySerializedAs("playerInSightRange")] [SerializeField]
+        private bool playerInAudibleRange;
+
+        [SerializeField] private bool playerInAttackRange;
 
         #endregion
 
@@ -50,17 +53,20 @@ namespace Enemy
 
         public void HandleStates()
         {
-            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            playerInAudibleRange = Physics.CheckSphere(transform.position, enemyManager.AudibleRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, enemyManager.AttackRange, whatIsPlayer);
 
-            if (!playerInSightRange && !playerInAttackRange)
+            //If player is in neither audible range, attack range or sight cone, then patrol
+            if (!playerInAudibleRange && !playerInAttackRange && !PlayerInSightCone())
                 Patrolling();
-            if (playerInSightRange && !playerInAttackRange)
+            //if the player is in audible range or in sight cone but not in attack range, chase the player
+            else if ((playerInAudibleRange || (PlayerInSightCone() && enemyManager.EnemyCombat.CanSeePlayer())) &&
+                     !playerInAttackRange)
                 ChasePlayer();
-            if (playerInSightRange && playerInAttackRange)
-                AttackPlayer();
-            
-            enemyManager.EnemyAnimator.SetAnimatorForwardSpeed(agent.velocity.magnitude/agent.speed);
+            //if the player is in audible range and in attack range, attack the player
+            else if (playerInAudibleRange && playerInAttackRange) AttackPlayer();
+
+            enemyManager.EnemyAnimator.SetAnimatorForwardSpeed(agent.velocity.magnitude / agent.speed);
         }
 
         private void Start()
@@ -68,7 +74,7 @@ namespace Enemy
             lastPlayerPosition = enemyManager.PlayerTransform.position;
             StartCoroutine(UpdateLastPlayerPosition());
         }
-        
+
         private IEnumerator UpdateLastPlayerPosition()
         {
             while (!enemyManager.CharacterHealth.IsDead)
@@ -80,9 +86,9 @@ namespace Enemy
 
         public void StopMoving()
         {
-            if(stoppedMoving)
+            if (stoppedMoving)
                 return;
-            
+
             agent.SetDestination(transform.position);
             agent.velocity = Vector3.zero;
             agent.enabled = false;
@@ -124,7 +130,8 @@ namespace Enemy
             agent.SetDestination(transform.position);
 
             //prevent look at from changing the x and z rotation
-            transform.LookAt(new Vector3(enemyManager.PlayerTransform.position.x, transform.position.y, enemyManager.PlayerTransform.position.z));
+            transform.LookAt(new Vector3(enemyManager.PlayerTransform.position.x, transform.position.y,
+                enemyManager.PlayerTransform.position.z));
 
             if (!alreadyAttacked && !enemyManager.EnemyAnimator.isReloading)
             {
@@ -140,12 +147,35 @@ namespace Enemy
             alreadyAttacked = false;
         }
 
+        private bool PlayerInSightCone()
+        {
+            // Calculate the direction to the player
+            Vector3 directionToPlayer = enemyManager.PlayerTransform.position - transform.position;
+
+            // Check if the player is within the sight range
+            if (directionToPlayer.magnitude <= enemyManager.SightRange)
+            {
+                // Calculate the angle between the enemy's forward direction and the direction to the player
+                float angle = Vector3.Angle(transform.forward, directionToPlayer);
+
+                // Check if the angle is within the cone of vision
+                if (angle <= enemyManager.SightAngle / 2f)
+                {
+                    // Player is within the cone of vision
+                    return true;
+                }
+            }
+
+            // Player is not within the cone of vision
+            return false;
+        }
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackRange);
+            Gizmos.DrawWireSphere(transform.position, enemyManager.AttackRange);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, sightRange);
+            Gizmos.DrawWireSphere(transform.position, enemyManager.AudibleRange);
         }
     }
 }
