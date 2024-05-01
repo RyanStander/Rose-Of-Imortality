@@ -56,15 +56,16 @@ namespace Enemy
             playerInAudibleRange = Physics.CheckSphere(transform.position, enemyManager.AudibleRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, enemyManager.AttackRange, whatIsPlayer);
 
-            //If player is in neither audible range, attack range or sight cone, then patrol
-            if (!playerInAudibleRange && !playerInAttackRange && !PlayerInSightCone())
-                Patrolling();
+            //if the player is in in attack range and can see the player, attack the player
+            if (playerInAttackRange && enemyManager.EnemyCombat.CanSeePlayer())
+                AttackPlayer();
             //if the player is in audible range or in sight cone but not in attack range, chase the player
-            else if ((playerInAudibleRange || (PlayerInSightCone() && enemyManager.EnemyCombat.CanSeePlayer())) &&
-                     !playerInAttackRange)
+            else if (playerInAudibleRange || (PlayerInSightCone() && enemyManager.EnemyCombat.CanSeePlayer()))
                 ChasePlayer();
-            //if the player is in audible range and in attack range, attack the player
-            else if (playerInAudibleRange && playerInAttackRange) AttackPlayer();
+            //else patrol
+            else
+                Patrolling();
+
 
             enemyManager.EnemyAnimator.SetAnimatorForwardSpeed(agent.velocity.magnitude / agent.speed);
         }

@@ -13,16 +13,15 @@ MonoBehaviour:
   m_Name: ChromaticVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   When:
     m_OverrideState: 1
     m_Value: 500
   Chroma:
     m_OverrideState: 1
-    m_Value: 18.1
+    m_Value: -4.7
 --- !u!114 &-8227319817507997372
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -36,7 +35,6 @@ MonoBehaviour:
   m_Name: GlitchVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
     m_Value: 0
@@ -46,6 +44,7 @@ MonoBehaviour:
   Noise:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: fe501083ed04d7148a38ba0776f57bbb, type: 3}
+    dimension: 1
   Size:
     m_OverrideState: 1
     m_Value: 45.8
@@ -71,7 +70,6 @@ MonoBehaviour:
   m_Name: DrunkVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
     m_Value: 0
@@ -94,28 +92,21 @@ MonoBehaviour:
   m_Name: CartoonVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   When:
     m_OverrideState: 1
     m_Value: 500
   Lines:
     m_OverrideState: 1
-    m_Value: 2.9
+    m_Value: 6.18
   ColorLight:
     m_OverrideState: 1
     m_Value: {r: 0, g: 1, b: 0.15510082, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   ColorDark:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
 --- !u!114 &-2012447152725075337
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -129,10 +120,9 @@ MonoBehaviour:
   m_Name: SimpleEdgeVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   When:
     m_OverrideState: 1
     m_Value: 500
@@ -152,7 +142,6 @@ MonoBehaviour:
   m_Name: VCRVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
     m_Value: 0
@@ -162,18 +151,19 @@ MonoBehaviour:
   Noise:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: fe501083ed04d7148a38ba0776f57bbb, type: 3}
+    dimension: 1
   Stripes:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 13.9
   Noisy:
     m_OverrideState: 1
-    m_Value: 0.22
+    m_Value: 0.34
   VerticalShift:
     m_OverrideState: 1
     m_Value: 0.25
   HorizontalShift:
     m_OverrideState: 1
-    m_Value: 1.8
+    m_Value: 0.52
 --- !u!114 &-32820517437979890
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -187,45 +177,40 @@ MonoBehaviour:
   m_Name: Bloom
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
-  threshold:
-    m_OverrideState: 0
-    m_Value: 0.9
-    min: 0
-  intensity:
-    m_OverrideState: 1
-    m_Value: 1
-    min: 0
-  scatter:
-    m_OverrideState: 0
-    m_Value: 0.7
-    min: 0
-    max: 1
-  clamp:
-    m_OverrideState: 0
-    m_Value: 65472
-    min: 0
-  tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 0
-    showEyeDropper: 1
-  highQualityFiltering:
-    m_OverrideState: 0
-    m_Value: 0
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 16
+  threshold:
+    m_OverrideState: 0
+    m_Value: 0.9
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  scatter:
+    m_OverrideState: 0
+    m_Value: 0.7
+  clamp:
+    m_OverrideState: 0
+    m_Value: 65472
+  tint:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  highQualityFiltering:
+    m_OverrideState: 0
+    m_Value: 0
+  downscale:
+    m_OverrideState: 0
+    m_Value: 0
+  maxIterations:
+    m_OverrideState: 0
+    m_Value: 6
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+    dimension: 1
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +250,6 @@ MonoBehaviour:
   m_Name: EdgeGlowVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
     m_Value: 0
@@ -278,9 +262,6 @@ MonoBehaviour:
   EdgeColor:
     m_OverrideState: 1
     m_Value: {r: 24.251463, g: 24.251463, b: 24.251463, a: 1}
-    hdr: 1
-    showAlpha: 1
-    showEyeDropper: 1
 --- !u!114 &323267036207820245
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -294,7 +275,6 @@ MonoBehaviour:
   m_Name: FastBlurVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
     m_Value: 0
@@ -303,7 +283,7 @@ MonoBehaviour:
     m_Value: 500
   Scale:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 4.94
 --- !u!114 &1054338064238387107
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -317,16 +297,16 @@ MonoBehaviour:
   m_Name: SketchVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   When:
     m_OverrideState: 1
     m_Value: 500
   Noise:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 95d9508f0d0215f44a553ab9e42f8c2b, type: 3}
+    dimension: 1
   Sensitivity:
     m_OverrideState: 1
     m_Value: 1
@@ -346,10 +326,33 @@ MonoBehaviour:
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
     m_Value: 1
+  neutralHDRRangeReductionMode:
+    m_OverrideState: 0
+    m_Value: 2
+  acesPreset:
+    m_OverrideState: 0
+    m_Value: 3
+  hueShiftAmount:
+    m_OverrideState: 0
+    m_Value: 0
+  detectPaperWhite:
+    m_OverrideState: 0
+    m_Value: 0
+  paperWhite:
+    m_OverrideState: 0
+    m_Value: 300
+  detectBrightnessLimits:
+    m_OverrideState: 0
+    m_Value: 1
+  minNits:
+    m_OverrideState: 0
+    m_Value: 0.005
+  maxNits:
+    m_OverrideState: 0
+    m_Value: 1000
 --- !u!114 &2697060259281085972
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -363,19 +366,18 @@ MonoBehaviour:
   m_Name: CRTVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   When:
     m_OverrideState: 1
     m_Value: 500
   Scan:
     m_OverrideState: 1
-    m_Value: 0.14
+    m_Value: 0.073
   Brightness:
     m_OverrideState: 1
-    m_Value: 2.17
+    m_Value: 1.35
   Offset:
     m_OverrideState: 1
     m_Value: 1.57
@@ -392,7 +394,6 @@ MonoBehaviour:
   m_Name: MonochromeVolume
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   Active:
     m_OverrideState: 1
     m_Value: 0
@@ -404,16 +405,10 @@ MonoBehaviour:
     m_Value: 0
   ColorLight:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
+    m_Value: {r: 0.03488314, g: 1, b: 0, a: 1}
   ColorDark:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
 --- !u!114 &9089219839632824142
 MonoBehaviour:
   m_ObjectHideFlags: 3

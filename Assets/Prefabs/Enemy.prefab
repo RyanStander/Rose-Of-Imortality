@@ -787,7 +787,7 @@ MonoBehaviour:
   RaycastOriginTransform: {fileID: 5833008636508139525}
   LayersToIgnore:
     serializedVersion: 2
-    m_Bits: 2998
+    m_Bits: 2870
   FireRate: 0.1
   WeaponForce: 25
   MaxAmmo: 25
@@ -951,6 +951,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -9070493210130169274, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1046,6 +1051,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6170625038081293824, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
     - target: {fileID: -6056541330796499132, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
       propertyPath: m_Layer
@@ -1086,6 +1096,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -4332706925441422008, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
     - target: {fileID: -4278032810995721380, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
       propertyPath: m_Layer
@@ -1116,6 +1131,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -3086436065929644917, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
     - target: {fileID: -2084811680363313996, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
       propertyPath: m_Layer
@@ -1125,6 +1145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1781356600409242780, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Head
       objectReference: {fileID: 0}
     - target: {fileID: -1703473491307067327, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
@@ -1160,6 +1185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -290750445479886849, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
       objectReference: {fileID: 0}
     - target: {fileID: -203856693384778745, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
@@ -1230,6 +1260,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3135921509060577837, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
+      objectReference: {fileID: 0}
     - target: {fileID: 3588849560313704984, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
       propertyPath: m_Layer
@@ -1249,6 +1284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948933247560734027, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
       objectReference: {fileID: 0}
     - target: {fileID: 3974016661214395164, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
@@ -1314,6 +1354,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817898888258712963, guid: 677d417f40f90364b9791a0490db3885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Limb
       objectReference: {fileID: 0}
     - target: {fileID: 8953972740105248388, guid: 677d417f40f90364b9791a0490db3885,
         type: 3}
@@ -1703,8 +1748,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4017435, y: 0.114230916, z: 0.21160209}
-  m_Center: {x: -0.0063709468, y: 0.057115335, z: 0.010200125}
+  m_Size: {x: 0.4017435, y: 0.18701512, z: 0.21160209}
+  m_Center: {x: -0.0063709468, y: 0.09350755, z: 0.010200121}
 --- !u!54 &3437949796484910381
 Rigidbody:
   m_ObjectHideFlags: 0
